@@ -1,0 +1,15 @@
+{
+  "name": "electron-issue-7866",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "Matheus Fernandes <npm@matheus.top> (https://matheus.top/)",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.5"
+  }
+}
