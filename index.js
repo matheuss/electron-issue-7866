@@ -1,19 +1,27 @@
 const path = require('path');
 
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, ipcMain} = require('electron');
 
 app.on('ready', () => {
 	const window = new BrowserWindow({
-		width: 500,
-		height: 500,
+		width: 250,
+		height: 250,
 		frame: false,
-		show: false
+		show: false,
+		enableLargerThanScreen: true
 	});
 	window.loadURL(path.join('file://', __dirname, '/index.html'))
+
+	function setPosition() {
+		const x = window.getPosition()[0];
+		window.setPosition(x, 0, true);
+	}
 
 	window.on('ready-to-show', () => {
 		window.show();
 		window.setAlwaysOnTop(true, "screen-saver");
-		window.setPosition(500, 0, true);
+		setPosition();
 	});
+
+	ipcMain.on('double click', setPosition);
 });

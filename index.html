@@ -5,3 +5,18 @@ body {
 	background-color: slategray;
 }
 </style>
+
+<script>
+const {ipcRenderer} = require('electron');
+clicks = 0;
+window.addEventListener('click', () => {
+	if (++clicks === 2) {
+		ipcRenderer.send('double click');
+		clicks = 0;
+	} else {
+		setTimeout(() => {
+			clicks = 0;
+		}, 500);
+	}
+});
+</script>
